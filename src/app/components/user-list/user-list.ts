@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { UserService } from '../../services/user-service';
 import { User } from '../../models/user.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +13,8 @@ import { User } from '../../models/user.model';
 })
 export class UserList {
   userData = signal<User[]>([]);
-  destroy$ = new Subject();
-  constructor(private userService: UserService) {
+  destroy$ = new Subject<void>();
+  constructor(private userService: UserService,private router:Router) {
     
   }
   ngOnInit() {
@@ -27,8 +28,13 @@ export class UserList {
     });
   }
 
+  showSharedSubCompo(){
+    this.router.navigate(['shared-data']);
+  }
+
   ngOnDestroy() {
-    this.destroy$.next(null);
+    this.destroy$.next();
     this.destroy$.complete();
   }
+
 }

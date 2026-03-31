@@ -1,10 +1,12 @@
+<h1>Shared Data</h1>
+
 <table>
     <tr>
         <th>Name</th>
         <th>Age</th>
     </tr>
 
-    @for(user of userData(); track user) {
+    @for(user of sharedUserData(); track user) {
     <tr>
         <td>{{user.firstName }}</td>
         <td>{{user.age}}</td>
@@ -12,5 +14,3 @@
     }
 
 </table>
-
-<button (click)="showSharedSubCompo()">Shared Subscription</button>

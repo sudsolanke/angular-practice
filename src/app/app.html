@@ -1,3 +1,6 @@
 <h1> List </h1>
+@if(showButton){
+    <button class="go-to-top" (click)="goToTop()">Go To Top</button>
+}
 <app-user-list></app-user-list>
 <router-outlet />
